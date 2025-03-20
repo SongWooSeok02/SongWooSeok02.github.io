@@ -4,6 +4,6 @@
 
 [**homework2-1**](https://SongWooSeok02.github.io/homework2-1.html)
 
-[**homework2-3**](https://SongWooSeok02.github.io/homework2-2.html)
+[**homework2-2**](https://SongWooSeok02.github.io/homework2-2.html)
 
 [**css_demo**](https://SongWooSeok02.github.io/css_demo.html)
