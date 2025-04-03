@@ -12,4 +12,4 @@
 
 [**css_demo**](https://SongWooSeok02.github.io/css_demo.html)
 
-[**homework3-1**](https://SongWooSeok02.github.io/homework3-1)
+[**homework3-1**](https://SongWooSeok02.github.io/homework3-1.php)
