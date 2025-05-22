@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+
+<body onload="startTime()">
+
+<h2>JavaScript Clock</h2>
+
+<div id="txt"></div>
+
+<script>
+function startTime() {
+  const today = new Date();
+  let h = today.getHours();
+  let m = today.getMinutes();
+  let s = today.getSeconds();
+  m = checkTime(m);
+  s = checkTime(s);
+  document.getElementById('txt').innerHTML =  h + ":" + m + ":" + s;
+  setTimeout(startTime, 1000);
+}
+
+function checkTime(i) {
+  if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
+  return i;
+}
+</script>
+<form action="" id="cakeform" onsubmit="return false;">
+    <fieldset>
+     <legend>카페 메뉴!</legend>
+     <label >드링크</label>
+     <input type="radio"  name="selectedmenu" value="Round6"
+     onclick="calculateTotal()" />
+     커피 - 3000원
+     <input type="radio"  name="selectedmenu" value="Round8"
+     onclick="calculateTotal()" />
+     아이스티 - 2000원
+     <input type="radio"  name="selectedmenu" value="Round10"
+     onclick="calculateTotal()" />
+     핫초코 - 2500원
+     <input type="radio"  name="selectedmenu" value="Round12"
+     onclick="calculateTotal()" />
+     에스프레소 - 2500원
+  
+     <label >Filling</label>
+  
+     <select id="filling" name='filling'
+     onchange="calculateTotal()">
+     <option value="None">Select Filling</option>
+     <option value="Lemon">Lemon($5)</option>
+     <option value="Custard">Custard($5)</option>
+     <option value="Fudge">Fudge($7)</option>
+     <option value="Mocha">Mocha($8)</option>
+     <option value="Raspberry">Raspberry($10)</option>
+     <option value="Pineapple">Pineapple($5)</option>
+     <option value="Dobash">Dobash($9)</option>
+     <option value="Mint">Mint($5)</option>
+     <option value="Cherry">Cherry($5)</option>
+     <option value="Apricot">Apricot($8)</option>
+     <option value="Buttercream">Buttercream($7)</option>
+     <option value="Chocolate Mousse">Chocolate Mousse($12)</option>
+    </select>
+     <br/>
+     <p>
+     <label for='includecandles' class="inlinelabel">
+     Include Candles($5)</label>
+     <input type="checkbox" id="includecandles" name='includecandles'
+    onclick="calculateTotal()" />
+    </p>
+  
+     <p>
+     <label class="inlinelabel" for='includeinscription'>
+     Include Inscription($20)</label>
+     <input type="checkbox" id="includeinscription"
+     name="includeinscription" onclick="calculateTotal()" />
+  
+     <input type="text"  id="theinscription"
+     name="theinscription" value="Enter Inscription"  />
+     </p>
+     <div id="totalPrice"></div>
+  
+     </fieldset>
+ </form>
+
+</body>
+</html>
