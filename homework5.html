@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>카페 계산기</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      max-width: 420px;
+      margin: 40px auto;
+      padding: 20px;
+      background: #f9f9f9;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    h2 {
+      text-align: center;
+      margin-bottom: 5px;
+    }
+    #datetime {
+      text-align: center;
+      font-size: 0.9em;
+      color: #555;
+      margin-bottom: 20px;
+    }
+    .menu-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin: 8px 0;
+    }
+    .menu-item label {
+      flex: 1;
+      font-size: 0.95em;
+    }
+    .menu-item input {
+      width: 60px;
+      padding: 5px;
+    }
+    button {
+      width: 100%;
+      padding: 10px;
+      background: #007BFF;
+      color: white;
+      font-size: 16px;
+      border: none;
+      border-radius: 6px;
+      margin-top: 15px;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #0056b3;
+    }
+    #total {
+      margin-top: 20px;
+      text-align: center;
+      font-size: 1.1em;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <h2>카페 계산기</h2>
+  <div id="datetime">시간을 불러오는 중...</div>
+
+  <form id="menuForm">
+    <div class="menu-item">
+      <label for="americano">아메리카노 (₩3,000)</label>
+      <input type="number" id="americano" min="0" value="0">
+    </div>
+    <div class="menu-item">
+      <label for="latte">카페라떼 (₩3,500)</label>
+      <input type="number" id="latte" min="0" value="0">
+    </div>
+    <div class="menu-item">
+      <label for="cappuccino">카푸치노 (₩3,800)</label>
+      <input type="number" id="cappuccino" min="0" value="0">
+    </div>
+    <div class="menu-item">
+      <label for="macchiato">카라멜 마끼아또 (₩4,200)</label>
+      <input type="number" id="macchiato" min="0" value="0">
+    </div>
+    <div class="menu-item">
+      <label for="cheesecake">치즈케이크 (₩4,000)</label>
+      <input type="number" id="cheesecake" min="0" value="0">
+    </div>
+    <div class="menu-item">
+      <label for="macaron">마카롱 (₩2,000)</label>
+      <input type="number" id="macaron" min="0" value="0">
+    </div>
+    <button type="button" onclick="calculateTotal()">총 계산</button>
+  </form>
+
+  <div id="total">총 금액: ₩0</div>
+
+  <script>
+    // 날짜,시간
+    function updateDateTime() {
+      const now = new Date();
+      const formatted = now.toLocaleString('ko-KR', {
+        year: 'numeric',
+        month: '2-digit',
+        day: '2-digit',
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit'
+      });
+      document.getElementById('datetime').textContent = "현재 시각: " + formatted;
+    }
+
+    // 총 금액
+    function calculateTotal() {
+      const prices = {
+        americano: 3000,
+        latte: 3500,
+        cappuccino: 3800,
+        macchiato: 4200,
+        cheesecake: 4000,
+        macaron: 2000
+      };
+
+      let total = 0;
+      for (let item in prices) {
+        const qty = parseInt(document.getElementById(item).value) || 0;
+        total += prices[item] * qty;
+      }
+
+      document.getElementById('total').textContent = "총 금액: ₩" + total.toLocaleString();
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+      updateDateTime();
+      setInterval(updateDateTime, 1000);
+    });
+  </script>
+</body>
+</html>
